@@ -1,6 +1,7 @@
 package co.com.sofka.crud.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "todos")
@@ -11,6 +12,9 @@ public class Todo {
     private String name;
     private boolean completed;
 
+    @ManyToOne
+    @JoinColumn(name = "id_todo_list", insertable = false, updatable = false)
+    private TodoList todoList;
 
     public Long getId() {
         return id;
