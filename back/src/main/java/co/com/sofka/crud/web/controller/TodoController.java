@@ -1,6 +1,6 @@
 package co.com.sofka.crud.web.controller;
 
-import co.com.sofka.crud.domain.service.TodoService;
+import co.com.sofka.crud.service.TodoService;
 import co.com.sofka.crud.persistence.entity.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

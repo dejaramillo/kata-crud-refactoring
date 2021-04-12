@@ -1,4 +1,4 @@
-package co.com.sofka.crud.domain.service;
+package co.com.sofka.crud.service;
 
 import co.com.sofka.crud.persistence.crud.TodoRepository;
 import co.com.sofka.crud.persistence.entity.Todo;
