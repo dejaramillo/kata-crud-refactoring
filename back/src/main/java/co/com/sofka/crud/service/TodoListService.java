@@ -1,31 +1,37 @@
 package co.com.sofka.crud.service;
 
+import co.com.sofka.crud.mapper.TodoListMapper;
+import co.com.sofka.crud.model.TodoListModel;
 import co.com.sofka.crud.persistence.crud.TodoListRepository;
+import co.com.sofka.crud.persistence.entity.Todo;
 import co.com.sofka.crud.persistence.entity.TodoList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+
 @Service
 public class TodoListService {
+
     @Autowired
     TodoListRepository todoListRepository;
 
-    public Iterable<TodoList> list(){
-        return todoListRepository.findAll();
-    }
+    @Autowired
+    TodoListMapper todoListMapper;
 
-    public TodoList save(TodoList todoList){
-        return todoListRepository.save(todoList);
-    }
-
-    public void delete(Integer id){
-        todoListRepository.delete(get(id));
-    }
-
-    public TodoList get(Integer id){
-        return todoListRepository.findById(id).orElseThrow();
+    public List<TodoListModel> getAll(){
+        return todoListMapper.toTodoListModels((List<TodoList>) todoListRepository.findAll());
     }
 
 
+
+    public TodoListModel saveTodoList(TodoListModel todoListModel) {
+        if (todoListModel.getName().isEmpty() || todoListModel.getName().length() < 3) {
+            throw new RuntimeException("La Lista esta vacia");
+        }
+        TodoList todoList = todoListMapper.toTodoList(todoListModel);
+        return todoListMapper.toTodoListModel(todoListRepository.save(todoList));
+    }
 
 }

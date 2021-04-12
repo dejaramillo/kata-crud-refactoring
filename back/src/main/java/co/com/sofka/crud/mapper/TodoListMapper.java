@@ -9,7 +9,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-@Mapper
+import java.util.List;
+
+
+@Mapper(componentModel = "spring")
 public interface TodoListMapper {
 
     @Mappings({
@@ -17,6 +20,7 @@ public interface TodoListMapper {
             @Mapping(source = "name", target = "name")
     })
     TodoListModel toTodoListModel(TodoList todoList);
+    List<TodoListModel> toTodoListModels(List<TodoList> todoLists);
 
     @InheritInverseConfiguration
     @Mapping(target = "todo", ignore = true)
