@@ -13,6 +13,14 @@ public class Todo {
     private String name;
     private boolean completed;
 
+    @Column(name = "id_todo_list")
+    private Integer todoListId;
+
+    @ManyToOne
+    @JoinColumn(name = "id_todo_list", insertable = false, updatable = false)
+    private TodoList todoList;
+
+
     public Integer getTodoListId() {
         return todoListId;
     }
@@ -29,12 +37,6 @@ public class Todo {
         this.todoList = todoList;
     }
 
-    @Column(name = "id_todo_list")
-    private Integer todoListId;
-
-    @ManyToOne
-    @JoinColumn(name = "id_todo_list", insertable = false, updatable = false)
-    private TodoList todoList;
 
     public Long getId() {
         return id;

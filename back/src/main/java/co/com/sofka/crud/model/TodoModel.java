@@ -1,10 +1,9 @@
 package co.com.sofka.crud.model;
 
-import co.com.sofka.crud.persistence.entity.Todo;
 
 public class TodoModel {
 
-    private Integer id;
+    private Long id;
     private String name;
     private Boolean completed;
     private Integer todoListId;
@@ -19,11 +18,11 @@ public class TodoModel {
 
     private TodoListModel todoListModel;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

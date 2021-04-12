@@ -20,6 +20,7 @@ public interface TodoMapper {
             @Mapping(source = "todoList", target = "todoListModel")
     })
     TodoModel toTodoModel(Todo todo);
+    List<TodoModel> toTodoModels(List<Todo> todos);
 
     @InheritInverseConfiguration
     Todo toTodo(TodoModel todoModel);

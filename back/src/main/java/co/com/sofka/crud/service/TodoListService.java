@@ -3,7 +3,6 @@ package co.com.sofka.crud.service;
 import co.com.sofka.crud.mapper.TodoListMapper;
 import co.com.sofka.crud.model.TodoListModel;
 import co.com.sofka.crud.persistence.crud.TodoListRepository;
-import co.com.sofka.crud.persistence.entity.Todo;
 import co.com.sofka.crud.persistence.entity.TodoList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,13 +24,15 @@ public class TodoListService {
     }
 
 
-
     public TodoListModel saveTodoList(TodoListModel todoListModel) {
         if (todoListModel.getName().isEmpty() || todoListModel.getName().length() < 3) {
-            throw new RuntimeException("La Lista esta vacia");
+            throw new RuntimeException("Lista vacia o muy corta");
         }
         TodoList todoList = todoListMapper.toTodoList(todoListModel);
         return todoListMapper.toTodoListModel(todoListRepository.save(todoList));
     }
 
+    public void delete(int id){
+        todoListRepository.deleteById(id);
+    }
 }

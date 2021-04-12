@@ -1,8 +1,6 @@
 package co.com.sofka.crud.web.controller;
 
 import co.com.sofka.crud.model.TodoListModel;
-import co.com.sofka.crud.persistence.entity.Todo;
-import co.com.sofka.crud.persistence.entity.TodoList;
 import co.com.sofka.crud.service.TodoListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/tst" )
+@CrossOrigin(origins = "http://localhost:3000")
 public class TodoListController {
 
     @Autowired
@@ -24,5 +22,10 @@ public class TodoListController {
     @PostMapping(value = "api/list")
     public TodoListModel save(@RequestBody TodoListModel todoListModel){
         return todoListService.saveTodoList(todoListModel);
+    }
+
+    @DeleteMapping("/del/{id}")
+    public void delete(@PathVariable int id){
+        todoListService.delete(id);
     }
 }
