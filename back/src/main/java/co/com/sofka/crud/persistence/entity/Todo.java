@@ -6,11 +6,31 @@ import java.util.List;
 @Entity
 @Table(name = "todos")
 public class Todo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private boolean completed;
+
+    public Integer getTodoListId() {
+        return todoListId;
+    }
+
+    public void setTodoListId(Integer todoListId) {
+        this.todoListId = todoListId;
+    }
+
+    public TodoList getTodoList() {
+        return todoList;
+    }
+
+    public void setTodoList(TodoList todoList) {
+        this.todoList = todoList;
+    }
+
+    @Column(name = "id_todo_list")
+    private Integer todoListId;
 
     @ManyToOne
     @JoinColumn(name = "id_todo_list", insertable = false, updatable = false)

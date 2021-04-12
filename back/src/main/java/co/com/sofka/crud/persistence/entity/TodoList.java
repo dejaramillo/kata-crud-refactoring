@@ -17,6 +17,14 @@ public class TodoList {
     @OneToMany(mappedBy = "todoList")
     private List<Todo> todo;
 
+    public List<Todo> getTodo() {
+        return todo;
+    }
+
+    public void setTodo(List<Todo> todo) {
+        this.todo = todo;
+    }
+
     public Integer getId() {
         return id;
     }
