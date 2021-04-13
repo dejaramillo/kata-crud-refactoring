@@ -1,12 +1,12 @@
 const HOST_API = window._env.HOST_API || "http://localhost:8080/api/"
 export default {
-    findAll : async (listId) => {
+    findAll : async () => {
         return fetch(HOST_API + listId+"/todos")
             .catch(error => console.error('Error:', error))
 
     },
 
-    save : async (listId, request) => {
+    save : async (request) => {
         return fetch(HOST_API + listId+"/todo", {
             method: "POST",
             body: JSON.stringify(request),
@@ -18,7 +18,7 @@ export default {
 
     },
 
-    update : async (listId, request) => {
+    update : async (request) => {
         return fetch(HOST_API + listId+"/todo", {
             method: "PUT",
             body: JSON.stringify(request),
