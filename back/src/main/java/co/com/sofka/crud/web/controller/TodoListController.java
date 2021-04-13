@@ -14,17 +14,17 @@ public class TodoListController {
     @Autowired
     TodoListService todoListService;
 
-    @GetMapping("/all")
+    @GetMapping("api/list")
     public List<TodoListModel> getAll(){
         return todoListService.getAll();
     }
 
-    @PostMapping(value = "api/list")
+    @PostMapping(value = "api/todolist")
     public TodoListModel save(@RequestBody TodoListModel todoListModel){
         return todoListService.saveTodoList(todoListModel);
     }
 
-    @DeleteMapping("/del/{id}")
+    @DeleteMapping("api/{id}/todolist")
     public void delete(@PathVariable int id){
         todoListService.delete(id);
     }
