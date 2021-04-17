@@ -1,7 +1,7 @@
 package co.com.sofka.crud.persistence.entity;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Table(name = "todos")

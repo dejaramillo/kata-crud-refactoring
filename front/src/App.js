@@ -1,20 +1,8 @@
-import React from 'react';
-import { StoreProvider } from "./store";
-import ListView from "./list/ListView";
-import FormView from "./list/FormView";
+import React from "react";
+import TodoList from "./components/TodoList";
 
 function App() {
-  return <StoreProvider>
-    <div className="title">
-      <h3>Dashboard</h3>
-    </div>
-    <div className="container">
-      <div className="content">
-        <FormView />
-        <ListView />
-      </div>
-    </div>
-  </StoreProvider>
+  return <TodoList />;
 }
 
 export default App;

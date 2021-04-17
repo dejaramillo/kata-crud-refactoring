@@ -5,7 +5,6 @@ import co.com.sofka.crud.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 
 @RestController
@@ -38,9 +37,10 @@ public class TodoController {
         service.delete(id);
     }
 
-   @GetMapping(value = "api/{id}/todo")
-    public TodoModel get(@PathVariable("id") Long id) throws InvalidKeySpecException {
-        return service.get(id);
+    @GetMapping(value = "api/{listId}/todo")
+    public List<TodoModel> getAllByTodoListId(@PathVariable("listId")int listId){
+        return service.getByTodoListId(listId);
+
     }
 
 }
