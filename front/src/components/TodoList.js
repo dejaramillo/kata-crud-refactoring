@@ -76,12 +76,16 @@ function TodoList() {
       <div className="container">
         <div className="content">
           <input
+            className="form-control"
             type="text"
             value={mainListValue}
             onChange={(e) => setMainListValue(e.target.value)}
             placeholder="lista de TO-DO"
           />
-          <button onClick={handleNewMainList}>Nueva Lista</button>
+          <br />
+          <button className="btn btn-success" onClick={handleNewMainList}>
+            Nueva Lista
+          </button>
         </div>
         {!errorMessage.validate && (
           <div style={{ color: "red" }}>{errorMessage.message}</div>

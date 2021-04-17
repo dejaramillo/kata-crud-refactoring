@@ -129,7 +129,6 @@ function TodoListOfList({ MainList, handleDeleteTodoMainList }) {
     const newListOfList = newListOfLists.filter(
       (item) => item.id === editTodoListofList[0].id
     );
-    console.log(newListOfList[0]);
     editTodoListOfListServer(newListOfList[0], true);
     setTodoListOfLists(newListOfLists);
   };
@@ -141,10 +140,16 @@ function TodoListOfList({ MainList, handleDeleteTodoMainList }) {
     <fieldset className="contentList">
       <legend>
         {name || ""}
-        <button onClick={(e) => handleDeleteTodoMainList(id)}>Eliminar</button>
+        <button
+          className="btn btn-danger"
+          onClick={(e) => handleDeleteTodoMainList(id)}
+        >
+          Eliminar
+        </button>
       </legend>
       <div>
         <input
+          className="form-control"
           type="text"
           value={listOfListValue}
           onChange={(e) => {
@@ -152,12 +157,19 @@ function TodoListOfList({ MainList, handleDeleteTodoMainList }) {
           }}
           placeholder="Que piensas hacer?"
         />
+        <br />
         {isEditing ? (
-          <button onClick={(e) => handleEditTodoListOfListsParent()}>
+          <button
+            className="btn btn-primary"
+            onClick={(e) => handleEditTodoListOfListsParent()}
+          >
             Editar
           </button>
         ) : (
-          <button onClick={(e) => handleCreateTodoListOfLists(id)}>
+          <button
+            className="btn btn-success"
+            onClick={(e) => handleCreateTodoListOfLists(id)}
+          >
             Crear
           </button>
         )}
@@ -182,6 +194,7 @@ function TodoListOfList({ MainList, handleDeleteTodoMainList }) {
           const { id = "", name = "", completed = false } = todo;
           return (
             <div
+              className="row"
               key={id}
               style={{
                 display: "flex",
@@ -190,11 +203,14 @@ function TodoListOfList({ MainList, handleDeleteTodoMainList }) {
                 width: "80%",
               }}
             >
-              <div>{id}</div>
-              <div style={{ color: `${completed ? "gray" : "black"}` }}>
+              <div className="col-sm-1">{id}</div>
+              <div
+                className="col-sm-3"
+                style={{ color: `${completed ? "gray" : "black"}` }}
+              >
                 {name}
               </div>
-              <div>
+              <div className="col-sm-3">
                 <input
                   type="checkbox"
                   onChange={(e) => handleCheckedTodoListOfLists(id)}
@@ -202,12 +218,16 @@ function TodoListOfList({ MainList, handleDeleteTodoMainList }) {
                 />
               </div>
               <div>
-                <button onClick={(e) => handleDeleteTodoListOfLists(id)}>
+                <button
+                  className="btn btn-danger"
+                  onClick={(e) => handleDeleteTodoListOfLists(id)}
+                >
                   Eliminar
                 </button>
               </div>
               <div>
                 <button
+                  className="btn btn-primary"
                   disabled={completed}
                   onClick={(e) => handleEditTodoListOfLists(id)}
                 >
